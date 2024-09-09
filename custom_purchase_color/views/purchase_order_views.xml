@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Tree view inside the order lines (list view) -->
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_qty']" position="before">
+                <field name="sku" string="SKU" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                <field name="color_id" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                <field name="size_id" attrs="{'invisible': [('product_id', '=', False)]}"/>
+            </xpath>
+            
+            <!-- Form view inside the order lines (editable form view in line) -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="after">
+                <field name="sku" string="SKU" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                <field name="color_id" attrs="{'invisible': [('product_id', '=', False)]}"/>
+                <field name="size_id" attrs="{'invisible': [('product_id', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

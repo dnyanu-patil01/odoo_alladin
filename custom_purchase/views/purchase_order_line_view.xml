@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Inherit the existing purchase order line form view -->
+        <record id="view_purchase_order_line_form_custom" model="ir.ui.view">
+            <field name="name">purchase.order.line.form.custom</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_form"/> <!-- Ensure this ID is correct -->
+            <field name="arch" type="xml">
+                <!-- Locate the spot where you want to add your variant field -->
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="variant_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
